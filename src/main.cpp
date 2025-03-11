@@ -11,7 +11,7 @@ class $modify(IDPopup, SetIDPopup) {
         if (typeinfo_cast<FindObjectPopup*>(this)) {
             auto menu = this->getChildByType<CCLayer>(0)->getChildByType<CCMenu>(0);
             for (int i = 0; i < 2; i++) {
-                auto button = CCMenuItemSpriteExtra::create(CCSprite::create("button.png"_spr), this, menu_selector(IDPopup::findTriggers));
+                auto button = CCMenuItemSpriteExtra::create(CCSprite::create(("nwo5.trigger_id_search/button" + std::to_string(i) + ".png").c_str()), this, menu_selector(IDPopup::findTriggers));
                 button->setPosition(ccp(86, 0 + (i * 40)));
                 button->setScale(0.75);
                 button->m_baseScale = 0.75;
