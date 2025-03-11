@@ -5,12 +5,16 @@ using namespace geode::prelude;
 
 auto mod = Mod::get();
 
+std::unordered_set<int> collisionObjects {
+    1815, 1816, 3609, 3640
+};
+
 class $modify(IDPopup, SetIDPopup) {
     bool init(int current, int begin, int end, gd::string title, gd::string button, bool p5, int p6 , float p7, bool p8, bool p9) {
         if(!SetIDPopup::init(current, begin, end, title, button, p5, p6, p7, p8, p9)) return false;
         if (typeinfo_cast<FindObjectPopup*>(this)) {
             auto menu = this->getChildByType<CCLayer>(0)->getChildByType<CCMenu>(0);
-            for (int i = 0; i < 2; i++) {
+            for (int i = 0; i < 3; i++) {
                 auto button = CCMenuItemSpriteExtra::create(CCSprite::create(("nwo5.trigger_id_search/button" + std::to_string(i) + ".png").c_str()), this, menu_selector(IDPopup::findTriggers));
                 button->setPosition(ccp(86, 0 + (i * 40)));
                 button->setScale(0.75);
@@ -56,14 +60,14 @@ class $modify(IDPopup, SetIDPopup) {
             if (obj->m_targetModCenterID == id) return true;
             if (obj->m_rotationTargetID == id) return true;
         }
-        if (filterType == 1) {
+        if (filterType == 1 && !collisionObjects.contains(obj->m_objectID)) {
             if (obj->m_itemID == id) return true;
             if (obj->m_itemID2 == id) return true;
         }
-        // if (filterType == 2) {
-        //     if (obj->m_collision == id) return true;
-        //     if (obj->m_itemID2 == id) return true;
-        // }
+        if (filterType == 2 && collisionObjects.contains(obj->m_objectID)) {
+            if (obj->m_itemID == id) return true;
+            if (obj->m_itemID2 == id) return true;
+        }
         return false;
     }
 };
