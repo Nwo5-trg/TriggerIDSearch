@@ -1,0 +1,43 @@
+{
+	"geode": "4.2.0",
+	"gd": {
+		"win": "2.2074",
+		"android": "2.2074",
+		"mac": "2.2074"
+	},
+	"id": "nwo5.trigger_id_search",
+	"name": "Trigger ID Search",
+	"version": "v0.1.0-beta.1",
+	"developer": "Nwo5",
+	"description": "Search for triggers by id.",
+	"resources": {
+		"sprites": [
+			"resources/*.png"
+		]
+	},
+	"settings": {
+		"include-current-selection": {
+			"type": "bool",
+			"name": "Include Current Selection",
+			"default": false,
+			"description": "If false, deselects all currently selected objects when selecting filtered triggers."
+		},
+		"auto-delete": {
+			"type": "bool",
+			"name": "Auto Delete",
+			"default": false
+		},
+		"update-editor": {
+			"type": "bool",
+			"name": "Update Editor",
+			"default": true,
+			"description": "Updates editor buttons when selecting filtered triggers."
+		},
+		"close-on-select": {
+			"type": "bool",
+			"name": "Close On Select",
+			"default": true,
+			"description": "Closes the popup when you filter triggers."
+		}
+	}
+}
