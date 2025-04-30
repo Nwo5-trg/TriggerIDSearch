@@ -30,7 +30,9 @@ class $modify(IDPopup, SetIDPopup) {
 
     void findTriggers(CCObject* sender) {
         int type = stoi(static_cast<CCNode*>(sender)->getChildByType<CCNode>(1)->getID());
-        int id = std::stoi(std::string(m_inputNode->getString()));
+        auto string = std::string(m_inputNode->getString());
+        if (string.empty()) return;
+        int id = std::stoi(string);
         if (id < 1 || id > 9999) return;
         CCArray triggers;
         auto objs = LevelEditorLayer::get()->m_objects;
