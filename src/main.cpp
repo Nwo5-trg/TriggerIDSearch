@@ -9,6 +9,18 @@ std::unordered_set<int> collisionObjects {
     1815, 1816, 3609, 3640
 };
 
+std::vector<int> getIntVector(std::string input) {
+    std::vector<int> intVector;
+    auto start = 0;
+    while (true) {
+        auto comma = input.find(',', start);
+        intVector.push_back(std::strtol(input.substr(start, comma - start).c_str(), nullptr, 10));
+        if (comma == std::string::npos) break;
+        start = comma + 1;
+    }
+    return intVector;
+};
+
 class $modify(IDPopup, SetIDPopup) {
     bool init(int current, int begin, int end, gd::string title, gd::string button, bool p5, int p6 , float p7, bool p8, bool p9) {
         if(!SetIDPopup::init(current, begin, end, title, button, p5, p6, p7, p8, p9)) return false;
@@ -24,6 +36,9 @@ class $modify(IDPopup, SetIDPopup) {
                 button->addChild(valueNode);
                 menu->addChild(button);
             }
+            auto input = this->getChildByType<CCLayer>(0)->getChildByType<CCTextInputNode>(0);
+            input->setAllowedChars("1234567890,");
+            input->setMaxLabelLength(999);
         }
         return true;
     }
@@ -31,17 +46,17 @@ class $modify(IDPopup, SetIDPopup) {
     void findTriggers(CCObject* sender) {
         int type = stoi(static_cast<CCNode*>(sender)->getChildByType<CCNode>(1)->getID());
         auto string = std::string(m_inputNode->getString());
-        if (string.empty()) return;
-        int id = std::stoi(string);
-        if (id < 1 || id > 9999) return;
+        auto editUI = EditorUI::get();
         CCArray triggers;
-        auto objs = LevelEditorLayer::get()->m_objects;
-        for (int i = 0; i < objs->count(); i++) {
-            if (auto obj = typeinfo_cast<EffectGameObject*>(objs->objectAtIndex(i))) {
-                if (hasID(obj, id, type)) triggers.addObject(obj);
+        for (int id : getIntVector(string)) {
+            if (id < 1 || id > 9999 || id == 0) continue;
+            auto objs = LevelEditorLayer::get()->m_objects;
+            for (int i = 0; i < objs->count(); i++) {
+                if (auto obj = typeinfo_cast<EffectGameObject*>(objs->objectAtIndex(i))) {
+                    if (hasID(obj, id, type)) triggers.addObject(obj);
+                }
             }
         }
-        auto editUI = EditorUI::get();
         if (!mod->getSettingValue<bool>("include-current-selection") || mod->getSettingValue<bool>("auto-delete")) editUI->deselectAll();
         editUI->selectObjects(&triggers, true);
         if (mod->getSettingValue<bool>("auto-delete")) editUI->m_trashBtn->activate();

@@ -1,9 +1,10 @@
 {
-	"geode": "4.3.0",
+	"geode": "4.4.0",
 	"gd": {
 		"win": "2.2074",
 		"android": "2.2074",
-		"mac": "2.2074"
+		"mac": "2.2074",
+		"ios": "2.2704"
 	},
 	"id": "nwo5.trigger_id_search",
 	"name": "Trigger ID Search",

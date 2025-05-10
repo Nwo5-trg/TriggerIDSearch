@@ -1,5 +1,11 @@
+## v1.1.0
+- **Added** group array support (you can type multiple groups now :3) (suggested by **Akurio64**)
+- **Added** ios support
+- **Added** bump geode version
+- **Added** a guide cuz multiple ppl have had no idea what to do with the mod already
+
 ## v1.0.0
-- **Added** bumped geode version
+- **Added** bump geode version
 
 - **Fixed** crash with empty input
 - **Fixed** mod being in beta for some reason
