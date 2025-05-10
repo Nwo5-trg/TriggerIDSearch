@@ -49,7 +49,7 @@ class $modify(IDPopup, SetIDPopup) {
         auto editUI = EditorUI::get();
         CCArray triggers;
         for (int id : getIntVector(string)) {
-            if (id < 1 || id > 9999 || id == 0) continue;
+            if (id < 1 || id > 9999) continue;
             auto objs = LevelEditorLayer::get()->m_objects;
             for (int i = 0; i < objs->count(); i++) {
                 if (auto obj = typeinfo_cast<EffectGameObject*>(objs->objectAtIndex(i))) {

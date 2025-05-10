@@ -1,3 +1,8 @@
+## v1.1.1
+- **Fixed** ios "2.2704"
+- **Fixed** excuse to fix unneeded check (id == 0)
+- **Fixed** also forgot to bump version oops
+
 ## v1.1.0
 - **Added** group array support (you can type multiple groups now :3) (suggested by **Akurio64**)
 - **Added** ios support
