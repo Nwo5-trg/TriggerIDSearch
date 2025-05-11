@@ -1,3 +1,7 @@
+## v1.2.0
+- **Added** optimise finding things a ton
+- **Added** select objects with groups toggle (suggested by **Akurio64**)
+
 ## v1.1.1
 - **Fixed** ios "2.2704"
 - **Fixed** excuse to fix unneeded check (id == 0)

@@ -8,6 +8,8 @@ Bottom button is select by group, middle button is select by item id, top is col
 
 To input multiple groups just seperate by ",".
 
+Toggle button toggles between selecting triggers that target group or objects with the group. (this does not support itemids and collision ids sry :3)
+
 ## Credits:
 - *CarlIsBored* (on the gd modding discord server) for the mod idea
 - *Rue* for all the fire assets and logo
